@@ -1,6 +1,0 @@
-../Middleware/Shell/src/FreeRTOS_CLI.c:112:12:FreeRTOS_CLIRegisterCommand	32	static,ignoring_inline_asm
-../Middleware/Shell/src/FreeRTOS_CLI.c:153:12:FreeRTOS_CLIProcessCommand	40	static
-../Middleware/Shell/src/FreeRTOS_CLI.c:228:7:FreeRTOS_CLIGetOutputBuffer	4	static
-../Middleware/Shell/src/FreeRTOS_CLI.c:234:13:FreeRTOS_CLIGetParameter	32	static
-../Middleware/Shell/src/FreeRTOS_CLI.c:290:19:prvHelpCommand	32	static
-../Middleware/Shell/src/FreeRTOS_CLI.c:323:15:prvGetNumberOfParameters	24	static
