@@ -1,0 +1,10 @@
+../Src/main.c:75:6:dma_init	4
+../Src/main.c:125:6:DMA1_Stream5_IRQHandler	3
+../Src/main.c:150:6:timer_init	3
+../Src/main.c:196:6:clock_setup	1
+../Src/main.c:213:6:gpio_setup	1
+../Src/main.c:222:6:usart_setup	4
+../Src/main.c:330:6:AcquisitionTask	4
+../Src/main.c:359:6:ProcessingTask	1
+../Src/main.c:373:7:CommunicationTask	1
+../Src/main.c:382:5:main	10

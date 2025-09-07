@@ -1,0 +1,9 @@
+../Src/nvic.c:60:6:nvic_enable_irq	1
+../Src/nvic.c:73:6:nvic_disable_irq	1
+../Src/nvic.c:87:9:nvic_get_pending_irq	1
+../Src/nvic.c:101:6:nvic_set_pending_irq	1
+../Src/nvic.c:115:6:nvic_clear_pending_irq	1
+../Src/nvic.c:129:9:nvic_get_irq_enabled	1
+../Src/nvic.c:146:6:nvic_set_priority	1
+../Src/nvic.c:168:9:nvic_get_active_irq	1
+../Src/nvic.c:183:6:nvic_generate_software_interrupt	2
