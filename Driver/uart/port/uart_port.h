@@ -1,16 +1,12 @@
-/*
- * uart_port.h
- *
- *  Created on: Aug 6, 2025
- *      Author: hp
+/**
+ * @file      uart_port.h
+ * @brief     Defines the abstract porting interface for the UART driver.
  */
 
-#ifndef DRIVER_UART_PORT_UART_PORT_H_
-#define DRIVER_UART_PORT_UART_PORT_H_
-
+#ifndef UART_PORT_H
+#define UART_PORT_H
 
 // Forward declare the handle struct to avoid circular dependencies.
-// The full definition is in uart_private.h, which port implementations will include.
 struct uart_handle_t;
 
 /**
@@ -18,30 +14,37 @@ struct uart_handle_t;
  *        operations required by the UART driver.
  */
 typedef struct {
-    /** @brief Enables the peripheral clock. */
     void (*enable_clock)(struct uart_handle_t* handle);
-
-    /** @brief Disables the peripheral clock. */
     void (*disable_clock)(struct uart_handle_t* handle);
-
-    /** @brief Initializes the GPIO pins for UART function. */
     void (*init_pins)(struct uart_handle_t* handle);
-
-    /** @brief Configures the core UART settings (baud, parity, etc.). */
     void (*configure_core)(struct uart_handle_t* handle);
-
-    /** @brief Writes a single byte, blocking until complete. */
     void (*write_byte_blocking)(struct uart_handle_t* handle, uint8_t byte);
-
-    /** @brief Enables the transmit-related interrupts. */
-    void (*enable_tx_interrupt)(struct uart_handle_t* handle);
-
-    /** @brief Disables the transmit-related interrupts. */
-    void (*disable_tx_interrupt)(struct uart_handle_t* handle);
-
-    //... and so on for all required hardware interactions (RX, error handling, etc.)
-
+    uint8_t (*read_byte_blocking)(struct uart_handle_t* handle);
+    void (*enable)(struct uart_handle_t* handle);
+    void (*disable)(struct uart_handle_t* handle);
 } uart_port_interface_t;
 
+/* --- Functions to be provided by the concrete port implementation --- */
 
-#endif /* DRIVER_UART_PORT_UART_PORT_H_ */
+/**
+ * @brief Gets the porting API function table for a given instance.
+ * @param instance_num The hardware instance number.
+ * @return A pointer to the constant port interface struct, or NULL if invalid.
+ */
+const uart_port_interface_t* uart_port_get_api_for_instance(uint8_t instance_num);
+
+/**
+ * @brief Gets the peripheral base address for a given instance.
+ * @param instance_num The hardware instance number.
+ * @return A void pointer to the peripheral's base address, or NULL if invalid.
+ */
+void* uart_port_get_base_addr_for_instance(uint8_t instance_num);
+
+/**
+ * @brief Gets the peripheral clock frequency for a given instance.
+ * @param instance_num The hardware instance number.
+ * @return The clock frequency in Hz.
+ */
+uint32_t uart_port_get_clock_freq(uint8_t instance_num);
+
+#endif // UART_PORT_H
